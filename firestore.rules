@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Users collection
+    match /users/{userId} {
+      allow read: if true; // Allowed to read user profiles to find contacts
+      allow create, update: if true; // Allowed for account creation and settings update
+      allow delete: if false;
+    }
+    
+    // Conversations collection
+    match /conversations/{conversationId} {
+      allow read, write: if true;
+      
+      // Messages subcollection
+      match /messages/{messageId} {
+        allow read, write: if true;
+      }
+    }
+    
+    // Standalone Messages collection (if accessed at root)
+    match /messages/{messageId} {
+      allow read, write: if true;
+    }
+    
+    // Pings collection
+    match /pings/{pingId} {
+      allow read, write: if true;
+    }
+
+    // Default match for backup/settings
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

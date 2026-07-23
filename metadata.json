@@ -1,0 +1,6 @@
+{
+  "name": "PingChat - Realtime Pink & Blue Messenger",
+  "description": "A sleek, modern pink and blue themed real-time messaging application with PIN authentication, instant Pings, rich media, GIFs, stickers, and cross-device sync.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

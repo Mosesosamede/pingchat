@@ -1,0 +1,77 @@
+{
+  "entities": {
+    "users": {
+      "title": "User",
+      "description": "User profile and PIN security settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "bio": { "type": "string" },
+        "pinHash": { "type": "string" },
+        "recoveryCode": { "type": "string" },
+        "status": { "type": "string" },
+        "lastSeen": { "type": "string" },
+        "typingIn": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "themePreference": { "type": "string" }
+      },
+      "required": ["id", "username", "displayName", "pinHash"]
+    },
+    "conversations": {
+      "title": "Conversation",
+      "description": "Direct chat between users",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "participants": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "participantInfo": { "type": "object" },
+        "lastMessage": { "type": "object" },
+        "updatedAt": { "type": "string" },
+        "unreadCount": { "type": "object" }
+      },
+      "required": ["id", "participants"]
+    },
+    "messages": {
+      "title": "Message",
+      "description": "Individual message within a conversation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "conversationId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "text": { "type": "string" },
+        "type": { "type": "string" },
+        "mediaUrl": { "type": "string" },
+        "emojiReactions": { "type": "object" },
+        "replyTo": { "type": "object" },
+        "forwardedFrom": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "status": { "type": "string" },
+        "encrypted": { "type": "boolean" }
+      },
+      "required": ["id", "conversationId", "senderId"]
+    },
+    "pings": {
+      "title": "Ping",
+      "description": "Instant attention ping notification",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "senderPhoto": { "type": "string" },
+        "receiverId": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "read": { "type": "boolean" },
+        "sound": { "type": "string" }
+      },
+      "required": ["id", "senderId", "receiverId"]
+    }
+  }
+}
